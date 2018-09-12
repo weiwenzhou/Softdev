@@ -10,6 +10,5 @@ KREWES = {
 
 }
 
-print #random.choice(KREWES[
-print str(input("Select player from team w, m, or x?"))
-#])
+team = input("Select player from team w, m, or x?") 
+print (random.choice(KREWES[team]#]))
