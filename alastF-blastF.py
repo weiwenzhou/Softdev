@@ -18,6 +18,15 @@ KREWES = {
 
 }
 
-team = input("Select player from team w, m, or x?") 
-print (team)
-print (random.choice(KREWES[str(team)]))
+#team = input("Select player from team w, m, or x? ") 
+#print (team)
+
+# Takes a team and returns a random name from given name
+print (random.choice(
+# Obtains the list of names from the dictionary when given a key
+KREWES[
+# Converts the input value into a string
+str(
+# Takes an input from the user
+input("Select player from team w, m, or x? "))
+]))
