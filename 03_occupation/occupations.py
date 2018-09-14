@@ -10,11 +10,10 @@ info = file.read().split("\n")
 file.close()
 # Title line
 info.pop(0)
-# Last line : blank plus total
-info.pop(len(info)-1)
+# Last line
 info.pop(len(info)-1)
 
-
+# Initialize dictionary
 book = {}
 for x in range(0,len(info)):
     if info[x].count(',') == 1:
