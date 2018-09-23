@@ -2,10 +2,28 @@
 
 <html>
     <head>
-        <title> {{ foo }} </title>
+        <title> ZhouLu Corporation </title>
     </head>
     <body>
-        fooo
+        
+        <h1>
+         Welcome to the ZhouLu Corporation. Find your next job here. <br>
+         A job for all(or 99.8% of everyone).
+        </h1>
+        
+        <h3>
+        Your job is {{ job }}.
+        </h3>
+        
+        <table> 
+        {% for item in collection %}
+            <tr>
+            <td> item <td>
+            <td> collection[item] <td>
+            <tr>
+        {% endfor %}
+        
+        </table>
     </body>
 </html>
 

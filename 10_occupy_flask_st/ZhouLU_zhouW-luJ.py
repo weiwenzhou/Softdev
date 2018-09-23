@@ -4,12 +4,15 @@
 #2018-09-23 
 
 from flask import Flask, render_template
+import random
 
 app = Flask(__name__)
 
+
+book = {}
 # From ZhouDynasty work - #3
 def pickOccupation():
-    file = open("occupations.csv",'r')
+    file = open("data/occupations.csv",'r')
     info = file.read().split("\n")
     file.close()
     
@@ -21,7 +24,6 @@ def pickOccupation():
     #print(len(info))
     
     # Initialize dictionary
-    book = {}
     for x in range(0,len(info)):
         if info[x].count(',') == 1:
             line = info[x].split(",")
@@ -49,7 +51,8 @@ def index():
 def occupy():
     return render_template(
             'template.html',
-            foo='./data/occupations.csv')
+            job=pickOccupation(),
+            collection=book)
             
 if __name__ == "__main__":
     app.debug = True
