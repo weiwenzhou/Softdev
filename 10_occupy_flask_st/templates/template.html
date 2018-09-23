@@ -3,12 +3,18 @@
 <html>
     <head>
         <title> ZhouLu Corporation </title>
+        
+        <style>
+        table, tr, td {
+            border : 1px solid black
+        }
+        </style>
     </head>
     <body>
         
         <h1>
          Welcome to the ZhouLu Corporation. Find your next job here. <br>
-         A job for all(or 99.8% of everyone).
+         A job for all (or 99.8% of everyone).
         </h1>
         
         <h3>
@@ -18,8 +24,8 @@
         <table> 
         {% for item in collection %}
             <tr>
-            <td> item <td>
-            <td> collection[item] <td>
+            <td> {{item}} </td>
+            <td> {{collection[item]}} </td>
             <tr>
         {% endfor %}
         
