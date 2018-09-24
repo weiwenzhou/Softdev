@@ -5,7 +5,7 @@
         <title> ZhouLu Corporation </title>
         
         <style>
-        table, tr, td {
+        table, tr, td, th {
             border : 1px solid black
         }
         </style>
@@ -22,11 +22,15 @@
         </h3>
         
         <table> 
+        <tr>
+            <th> Job Class </th>
+            <th> Percentage </th>
+        </tr>
         {% for item in collection %}
             <tr>
             <td> {{item}} </td>
             <td> {{collection[item]}} </td>
-            <tr>
+            </tr>
         {% endfor %}
         
         </table>
