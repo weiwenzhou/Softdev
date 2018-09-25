@@ -4,56 +4,47 @@
 #2018-09-23 
 
 from flask import Flask, render_template
+import csv
 import random
 
 app = Flask(__name__)
 
+# Builds dictionary of occupations and corresponding percentage of workforce.
+def buildDict(filename):
+    d = {}
+    with open(filename, 'rt') as csvfile:
+        reader = csv.reader(csvfile)
+        first = reader.__next__() # Processes column labels Job Class, Percentage
+        d[first[0]] = first[1]
+        for i in reader:
+            d[ i[0] ] = float( i[1])
+    return d
 
-book = {}
-# From ZhouDynasty work - #3
-def pickOccupation():
-    file = open("data/occupations.csv",'r')
-    info = file.read().split("\n")
-    file.close()
-    
-    info.pop(0) # Title line
-    info.pop(len(info)-1) # Last line
-    info.pop(len(info)-1) # again due to some issue with csv
-    
-    #print('info length:')
-    #print(len(info))
-    
-    # Initialize dictionary
-    for x in range(0,len(info)):
-        if info[x].count(',') == 1:
-            line = info[x].split(",")
-            book[line[0]] = float(line[1])
-        else: 
-            # more than 1 comma
-            lastC = info[x].rindex(',')
-            book[info[x][0:lastC]] = float(info[x][lastC+1:len(info[x])])
+# Choose random job based on percentage
+def chooseRandom(dictionary):
+    jobList = list(dictionary.keys()) # list of jobs
+    chanceList = list(dictionary.values()) # list of percentages
+    # Ignores first and last rows (heading and total)
+    randJob = random.choices(jobList[1:-1], chanceList[1:-1])[0]
+    return randJob
 
-    target = random.uniform(0, 99.8)
-    current = 0
-
-    for entry in book:
-        current = current + book[entry]
-        if current > target:
-            return entry
-
-
+# Root directory with link to table of occupations.
 @app.route('/')
 def index():
-    link = '<a href="./occupations">go here</a>'
-    return link
+    return '<a href="./occupations">click this</a>'
 
+# Calls buildDict to return the dictionary
+# Calls chooseRandom to choose Occupation based on relative percentage
 @app.route('/occupations')
-def occupy():
+def render():
+    dict = buildDict('./data/occupations.csv')
     return render_template(
             'template.html',
-            job=pickOccupation(),
-            collection=book)
-            
+            title = 'ZhouLu Corporation',
+            rand = chooseRandom(dict),
+            occupations = dict
+            )
+
 if __name__ == "__main__":
     app.debug = True
     app.run()

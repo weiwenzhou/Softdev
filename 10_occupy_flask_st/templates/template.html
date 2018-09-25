@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title> ZhouLu Corporation </title>
+        <title> {{title}} </title>
         
         <style>
         table, tr, td, th {
@@ -18,18 +18,14 @@
         </h1>
         
         <h3>
-        Your job is {{ job }}.
+        Your job is {{ rand }}.
         </h3>
         
         <table> 
-        <tr>
-            <th> Job Class </th>
-            <th> Percentage </th>
-        </tr>
-        {% for item in collection %}
+        {% for job in occupations %}
             <tr>
-            <td> {{item}} </td>
-            <td> {{collection[item]}} </td>
+            <td> {{job}} </td>
+            <td> {{occupations[job]}} </td>
             </tr>
         {% endfor %}
         
