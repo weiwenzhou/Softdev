@@ -6,11 +6,15 @@ app = Flask(__name__)
 def index():
     return render_template('form.html', title="Submit Form")
     
-@app.route("/auth")
+@app.route("/auth", methods=["GET", "POST"])
 def auth():
+    if (request.method == "GET"):
+        val = request.args['username']
+    else:
+        val = request.form['username']
     return render_template('out.html', 
                             title="Submission Complete",
-                            user=request.args['username'],
+                            user=val,
                             method=request.method)
 
 if __name__ == "__main__":
