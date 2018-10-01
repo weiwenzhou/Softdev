@@ -1,4 +1,4 @@
-# ZhouLu - Wei Wen Zhou, Jack Lu
+# Wei Wen Zhou
 # SoftDev1 pd8
 # K13 -- Echo Echo Echo
 # 2018-09-27
