@@ -1,9 +1,9 @@
-# ZhouLu - Wei Wen Zhou, Johnny Wong
+# Zebrows - Wei Wen Zhou, Johnny Wong
 # SoftDev1 pd8
-# K15 -- Oh yes, perhaps I do…   
-# 2018-10-2
+# K15 -- Oh yes, perhaps I do…
+# 2018-10-02
 
-from flask import Flask, render_template, request, session, url_for, redirect
+from flask import Flask, render_template, request, session, url_for, redirect, flash
 import os
 
 app = Flask(__name__)
@@ -13,8 +13,8 @@ app.secret_key = os.urandom(32);
 
 @app.route("/")
 def index():
-    if "ZhouLu" in session:
-        return render_template('welcome.html', user_welcome="ZhouLu")
+    if "Zebrows" in session:
+        return render_template('welcome.html', user_welcome="Zebrows")
     else:
         return render_template('form.html', title='welcome')
 
@@ -23,21 +23,23 @@ def authenticate():
     usr = request.form["name"]
     pw = request.form["pass"]
 
-    if usr != "ZhouLu":
-        return render_template("error.html",error_message="Incorrect username!")
-    if pw != "abc1234":
-        return render_template("error.html",error_message="Incorrect password!")
-    
+    if usr != "Zebrows":
+        flash("Incorrect username!")
+        return render_template("error.html")
+    if pw != "abc123":
+        flash("Incorrect password!")
+        return render_template("error.html")
+
     # add username to session
     session[usr] = pw
-    
-    return redirect(url_for("index")) 
-    
+
+    return redirect(url_for("index"))
+
 @app.route("/logout", methods=["POST"])
 def logout():
-    session.pop('ZhouLu')
+    session.pop('Zebrows', None)
     return redirect(url_for("index"))
-    
+
 if __name__ == "__main__":
     app.debug = True
     app.run()

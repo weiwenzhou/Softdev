@@ -1,17 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h2> Welcome! {{ user_welcome }} <br> ˚✧₊⁎❝᷀ົཽ≀ˍ̮ ❝᷀ົཽ⁎⁺˳✧༚ </h2>
 
-<html>
-    <head>
-        <title> {{ title }} </title>
-    </head>
-    <body>
-        
-        <h2> Welcome! {{ user_welcome }} <br></h2>
-        
-        <form action="/logout" method="POST">
-            <input type="submit" name="log" value="Logout">
-        </form>
-        
-    </body>
-</html>
-
+<form action="/logout" method="POST">
+     <input type="submit" name="log" value="Logout">
+</form>
+{% endblock %}
