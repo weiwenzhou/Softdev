@@ -18,21 +18,25 @@ c = db.cursor()               #facilitate db ops
 command = "CREATE TABLE courses (name TEXT, mark INTEGER, id INTEGER);"
 #build SQL stmt, save as string
 
+c.execute(command)    #run SQL statement
+
 with open('courses.csv') as file:
     courses = csv.DictReader(file)
     for row in courses:
-        command += "INSERT INTO courses values {" + row['code'] + "," + row['mark'] + "," + row['id'] + ";"
+        command = "INSERT INTO courses values (\"" + row['code'] + "\"," + row['mark'] + "," + row['id'] + ");"
         #print(row['code'], row['mark'], row['id'])
+        c.execute(command)    #run SQL statement
 
-command += "CREATE TABLE courses (name TEXT, age INTEGER, id INTEGER);"
-        
+command = "CREATE TABLE peeps (name TEXT, age INTEGER, id INTEGER);"
+c.execute(command)    #run SQL statement
+
 with open('peeps.csv') as file:
     peeps = csv.DictReader(file)
     for row in peeps:
-        command += "INSERT INTO courses values {" + row['name'] + "," + row['age'] + "," + row['id'] + ";"
+        command = "INSERT INTO courses values (\"" + row['name'] + "\"," + row['age'] + "," + row['id'] + ");"
         #print(row['name'], row['age'], row['id'])
-        
-c.execute(command)    #run SQL statement
+        c.execute(command)    #run SQL statement
+
 
 #==========================================================
 
