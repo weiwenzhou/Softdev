@@ -33,7 +33,7 @@ c.execute(command)    #run SQL statement
 with open('peeps.csv') as file:
     peeps = csv.DictReader(file)
     for row in peeps:
-        command = "INSERT INTO courses values (\"" + row['name'] + "\"," + row['age'] + "," + row['id'] + ");"
+        command = "INSERT INTO peeps values (\"" + row['name'] + "\"," + row['age'] + "," + row['id'] + ");"
         #print(row['name'], row['age'], row['id'])
         c.execute(command)    #run SQL statement
 
