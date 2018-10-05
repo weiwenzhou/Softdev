@@ -23,7 +23,7 @@ c.execute(command)    #run SQL statement
 with open('courses.csv') as file:
     courses = csv.DictReader(file)
     for row in courses:
-        command = "INSERT INTO courses values (\"" + row['code'] + "\"," + row['mark'] + "," + row['id'] + ");"
+        command = 'INSERT INTO courses values ("{0}", {1}, {2})'.format(row['code'], row['mark'], row['id'])
         #print(row['code'], row['mark'], row['id'])
         c.execute(command)    #run SQL statement
 
@@ -33,7 +33,7 @@ c.execute(command)    #run SQL statement
 with open('peeps.csv') as file:
     peeps = csv.DictReader(file)
     for row in peeps:
-        command = "INSERT INTO peeps values (\"" + row['name'] + "\"," + row['age'] + "," + row['id'] + ");"
+        command = 'INSERT INTO peeps values ("{0}", {1}, {2})'.format(row['name'], row['age'], row['id'])
         #print(row['name'], row['age'], row['id'])
         c.execute(command)    #run SQL statement
 
