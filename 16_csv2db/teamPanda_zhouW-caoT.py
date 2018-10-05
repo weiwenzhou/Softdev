@@ -16,13 +16,21 @@ c = db.cursor()               #facilitate db ops
 #INSERT YOUR POPULATE CODE IN THIS ZONE
 
 command = "CREATE TABLE courses (name TEXT, mark INTEGER, id INTEGER);"
-
+#build SQL stmt, save as string
 
 with open('courses.csv') as file:
     courses = csv.DictReader(file)
     for row in courses:
-        command += "INSERT INTO courses values {" + row['code'] + "," + row['
-        print(row['code'], row['mark'])
+        command += "INSERT INTO courses values {" + row['code'] + "," + row['mark'] + "," + row['id'] + ";"
+        #print(row['code'], row['mark'], row['id'])
+
+command += "CREATE TABLE courses (name TEXT, age INTEGER, id INTEGER);"
+        
+with open('peeps.csv') as file:
+    peeps = csv.DictReader(file)
+    for row in peeps:
+        command += "INSERT INTO courses values {" + row['name'] + "," + row['age'] + "," + row['id'] + ";"
+        #print(row['name'], row['age'], row['id'])
         
 c.execute(command)    #run SQL statement
 
