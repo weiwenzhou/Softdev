@@ -45,11 +45,12 @@ print(getAverage(2))
 def display():
     command = "SELECT * FROM peeps"
     c.execute(command)
-    table = "Name, id, average\n"
-    for each in c:
-        table += "{0}, {1}, {2}\n".format(each[0], each[2], getAverage(each[2]))
-        command = "SELECT * FROM peeps"
-        c.execute(command)
+    dict = {}
+    for each in c: 
+        dict[each[0]] = each[2]
+    table = "Name, id, average\n"    
+    for each in dict:
+        table += "{0}, {1}, {2}\n".format(each, dict[each], getAverage(dict[each]))
     return table
 
 print(display())
@@ -57,10 +58,19 @@ print(display())
 #Create a table of IDs and associated averages, named "peeps_avg"
 def createTable():
     command = "CREATE TABLE peeps_avg (id INTEGER, avg INTEGER);"
-    
+    c.execute(command)
+    command = "SELECT * FROM peeps"
+    c.execute(command)
+    dict = {}
+    for each in c: 
+        dict[each[0]] = each[2]
+    for each in dict:
+       c.execute('INSERT INTO courses values ({0}, {1})'.format(dict[each], getAverage(dict[each])))
 
 #Facilitate adding rows to the courses table
-
+def addCourse(name, mark, id):
+    command = 'INSERT INTO courses values ("{0}", {1}, {2})'.format(name, mark, id)
+    c.execute(command)
 
 
 #==========================================================
