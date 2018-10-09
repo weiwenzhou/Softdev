@@ -11,7 +11,7 @@ import csv       #facilitates CSV I/O
 
 DB_FILE="discobandit.db"
 
-db = sqlite3.connect("foo.db") #open if file exists, otherwise create
+db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 #==========================================================
@@ -67,12 +67,12 @@ def createTable():
     for each in dict:
        c.execute('INSERT INTO courses values ({0}, {1})'.format(dict[each], getAverage(dict[each])))
 
+
 #Facilitate adding rows to the courses table
 def addCourse(name, mark, id):
     command = 'INSERT INTO courses values ("{0}", {1}, {2})'.format(name, mark, id)
     c.execute(command)
-
-
+    
 #==========================================================
 
 db.commit() #save changes
