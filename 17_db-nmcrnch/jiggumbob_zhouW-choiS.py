@@ -1,9 +1,9 @@
 #Jiggumbob - Wei Wen Zhou, Soojin Choi 
 #SoftDev1 pd8
 #K #17: Average
-#2018-10-05
+#2018-10-04
 
-# Jiggumbob - a thingamabob; a gadget; a whatsit; a gewgaw 
+# Jiggumbob - a thingamabob; a gadget; a whatsit; a gewgaw 1
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitates CSV I/O
@@ -11,7 +11,7 @@ import csv       #facilitates CSV I/O
 
 DB_FILE="discobandit.db"
 
-db = sqlite3.connect("foo.db") #open if file exists, otherwise create
+db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 #==========================================================
@@ -29,7 +29,7 @@ with open('courses.csv') as file:
         #print(row['code'], row['mark'], row['id'])
         c.execute(command)    #run SQL statement
 
-command = "CREATE TABLE peeps (name TEXT, age INTEGER, id INTEGER);"
+command = "CREATE TABLE peeps (name TEXT, age INTEGER, id INTEGER PRIMARY KEY);"
 c.execute(command)    #run SQL statement
 
 with open('peeps.csv') as file:
@@ -39,9 +39,8 @@ with open('peeps.csv') as file:
         #print(row['name'], row['age'], row['id'])
         c.execute(command)    #run SQL statement
 
+
 #==========================================================
 
 db.commit() #save changes
 db.close()  #close database
-
-
