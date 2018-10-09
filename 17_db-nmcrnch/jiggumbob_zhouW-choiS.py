@@ -1,9 +1,9 @@
 #Jiggumbob - Wei Wen Zhou, Soojin Choi 
 #SoftDev1 pd8
 #K #17: Average
-#2018-10-04
+#2018-10-05
 
-# Jiggumbob - a thingamabob; a gadget; a whatsit; a gewgaw 1
+# Jiggumbob - a thingamabob; a gadget; a whatsit; a gewgaw 
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitates CSV I/O
@@ -38,11 +38,6 @@ with open('peeps.csv') as file:
         command = 'INSERT INTO peeps values ("{0}", {1}, {2})'.format(row['name'], row['age'], row['id'])
         #print(row['name'], row['age'], row['id'])
         c.execute(command)    #run SQL statement
-
-test = c.execute("SELECT id,name FROM courses;")
-for each in test:
-    print each[1][1]
-
 
 #==========================================================
 
