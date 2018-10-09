@@ -17,7 +17,8 @@ c = db.cursor()               #facilitate db ops
 #==========================================================
 #INSERT YOUR POPULATE CODE IN THIS ZONE
 
-#Look up each student’s grades
+#Look up each student's grades
+
 def gradeLookup(id):
     command = "SELECT courses.name, mark FROM peeps, courses WHERE peeps.id = {0} AND courses.id = {0}".format(id)
     c.execute(command)
@@ -28,7 +29,7 @@ def gradeLookup(id):
     
 print(gradeLookup(2))
 
-#Compute each student’s average
+#Compute each student's average
 def getAverage(id):
     command = "SELECT mark FROM peeps, courses WHERE peeps.id = {0} AND courses.id = {0}".format(id)
     c.execute(command)
@@ -42,7 +43,7 @@ def getAverage(id):
 print(getAverage(2))
 print()
     
-#Display each student’s name, id, and average
+#Display each student's name, id, and average
 def display():
     command = "SELECT * FROM peeps"
     c.execute(command)
@@ -58,7 +59,7 @@ print(display())
     
 #Create a table of IDs and associated averages, named "peeps_avg"
 def createTable():
-    command = "CREATE TABLE peeps_avg (id INTEGER, avg FLOAT);"
+    command = "CREATE TABLE peeps_avg (id INTEGER PRIMARY KEY, avg FLOAT);"
     c.execute(command)
     command = "SELECT * FROM peeps"
     c.execute(command)
