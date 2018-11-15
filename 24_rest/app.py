@@ -1,12 +1,17 @@
-from flask import Flask, render_template
-import urllib.request, urllib.parse
+from urllib import request
 import json
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def root():
-    fd = urllib.request.urlopen("https://api.nasa.gov/planetary/earth/imagery/?lon=100.75&lat=1.5&date=2014-02-01&cloud_score=True&api_key=DEMO_KEY")
+    #KEY_NASA = "DEMO_KEY"
+    KEY_NASA = "L1NmAHRWyqjuPbhLPAKh6b7R2MEaTqtiMKCLaLd0"
+    URL_STUB = "https://api.nasa.gov/planetary/apod?api_key="
+    URL = URL_STUB + KEY_NASA
+    fd = request.urlopen(URL)
     data = fd.read()
     dict = json.loads(data)
     
