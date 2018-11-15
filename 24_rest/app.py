@@ -1,3 +1,10 @@
+'''
+Wei Wen Zhou
+SoftDev1 pd08
+K24 -- A RESTful Journey Skyward
+2018-11-13
+'''
+
 from urllib import request
 import json
 

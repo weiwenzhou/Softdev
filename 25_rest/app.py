@@ -1,3 +1,10 @@
+'''
+Wei Wen Zhou
+SoftDev1 pd08
+K25 -- Getting More REST
+2018-11-14
+'''
+
 from urllib import request
 import json
 
