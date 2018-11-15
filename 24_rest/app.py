@@ -14,13 +14,22 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
+    
     #KEY_NASA = "DEMO_KEY"
     KEY_NASA = "L1NmAHRWyqjuPbhLPAKh6b7R2MEaTqtiMKCLaLd0"
     URL_STUB = "https://api.nasa.gov/planetary/apod?api_key="
     URL = URL_STUB + KEY_NASA
-    fd = request.urlopen(URL)
-    data = fd.read()
-    dict = json.loads(data)
+    print("---------------")
+	print("URL:")
+	print(URL)
+	print("---------------")
+	u = request.urlopen(URL)
+	response = u.read()
+    print("---------------")
+	print("response:")
+	print(response)
+	print("---------------")
+	data = json.loads(response)
     
     return render_template("index.html", url=dict['url'])
 
