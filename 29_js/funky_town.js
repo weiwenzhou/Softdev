@@ -40,17 +40,22 @@ var randomStudent = function() {
 var eventOne = function(){
     // Generates a random integer, n, between [0,10) and changes the text to the nth Fibonacci number
     randVal = Math.floor(Math.random() * 10);
-    retVal = fibonacci(randVal)+"<br>";
+    retVal = randVal + " -> " + fibonacci(randVal)+"<br>";
     console.log(retVal);
     var textbox = document.getElementById('log');
     textbox.innerHTML = textbox.innerHTML + retVal;
     return retVal;
 };
 
+var wipes = function() {
+    var textbox = document.getElementById('log');
+    textbox.innerHTML = "Output: <br>"
+}
+
 // Please Click button
 var b = document.getElementById('button');
-console.log(b);
+// console.log(b);
 b.addEventListener('click', eventOne);
 
 // Clear Output button
-b.addEventListener('click', eventOne);
+document.getElementById('clear').addEventListener('click', wipes);
