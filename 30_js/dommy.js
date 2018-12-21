@@ -14,10 +14,10 @@ fibButton = document.getElementById("fb"); // <button> : fib button
 
 var fibonacci = function(n) {
     // Returns the nth Fibonacci number
-    
+
     // Why think when you can hard-code it haha!
     var list = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765];
-    
+
     if (n < list.length) {
         return list[n];
     } else {
@@ -25,7 +25,17 @@ var fibonacci = function(n) {
     }
 }
 
-// Changes the header to the text of the <li> item hover over 
+var first = 0;
+var second = 1;
+
+var fib2 = function() {
+    var temp = first + second;
+    first = second;
+    second = temp;
+    return first;
+}
+
+// Changes the header to the text of the <li> item hover over
 list.addEventListener("mouseover",function(e){
     console.log(e.target);
     if (e.target.nodeName == "LI") {
@@ -47,6 +57,7 @@ list.addEventListener("click", function(e) {
     console.log(e);
     if (e.target.nodeName == "LI") {
         e.target.remove();
+        head.innerHTML= "Hello world!";
     }
 })
 
@@ -54,7 +65,7 @@ list.addEventListener("click", function(e) {
 button0.addEventListener("click", function(e) {
     console.log(e);
     var node = document.createElement("LI");
-    node.innerHTML = "element";
+    node.innerHTML = "WORD";
     list.appendChild(node);
 })
 
@@ -63,7 +74,7 @@ var nth = 1;
 fibButton.addEventListener("click", function(e) {
     console.log(e);
     var node = document.createElement("LI");
-    node.innerHTML = fibonacci(nth);
+    node.innerHTML = fib2();
     fibList.appendChild(node);
     nth += 1;
 })
